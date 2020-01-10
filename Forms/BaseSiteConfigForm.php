@@ -4,16 +4,16 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public\Forms;
+namespace BasicApp\Site\Forms;
 
-use BasicApp\Public\Config\Public as PublicConfig;
+use BasicApp\Site\Config\Site as PublicConfig;
 use BasicApp\Core\Form;
-use BasicApp\Public\PublicEvents;
+use BasicApp\Site\SiteEvents;
 
-abstract class BasePublicConfigForm extends \BasicApp\Config\BaseConfigForm
+abstract class BaseSiteConfigForm extends \BasicApp\Config\BaseConfigForm
 {
 
-    protected $returnType = PublicConfig::class;
+    protected $returnType = SiteConfig::class;
 
     protected $validationRules = [
         'theme' => 'not_special_chars|max_length[255]'
@@ -40,7 +40,7 @@ abstract class BasePublicConfigForm extends \BasicApp\Config\BaseConfigForm
 
     public static function themes($return = [])
     {
-        return PublicEvents::themes($return);
+        return SiteEvents::themes($return);
     }
 
 }

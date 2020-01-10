@@ -4,12 +4,12 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System;
+namespace BasicApp\Site;
 
 abstract class BasePublicController extends \BasicApp\Core\Controller
 {
 
-	protected $layout = 'BasicApp\Public\Views\layout';
+	protected $layout = 'BasicApp\Site\Views\layout';
 
     public function __construct()
     {

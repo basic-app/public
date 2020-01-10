@@ -4,14 +4,14 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public\Config;
+namespace BasicApp\Site\Config;
 
-use BasicApp\Public\Forms\PublicConfigForm;
+use BasicApp\Site\Forms\SiteConfigForm;
 
-abstract class BasePublic extends \BasicApp\Config\BaseConfig
+abstract class BaseSite extends \BasicApp\Config\BaseConfig
 {
 
-    protected $modelClass = PublicConfigForm::class;
+    protected $modelClass = SiteConfigForm::class;
 
     public $theme;
 

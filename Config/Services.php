@@ -4,7 +4,7 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public\Config;
+namespace BasicApp\Site\Config;
 
 class Services extends BaseServices
 {

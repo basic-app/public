@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public\Forms;
+namespace BasicApp\Site\Config;
 
-class PublicConfigForm extends BasePublicConfigForm
+class Site extends BaseSite
 {
 }

@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public;
+namespace BasicApp\Site\Forms;
 
-class PublicEvents extends BasePublicEvents
+class SiteConfigForm extends BaseSiteConfigForm
 {
 }

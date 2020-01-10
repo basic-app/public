@@ -4,7 +4,7 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public;
+namespace BasicApp\Site;
 
 abstract class PublicController extends BaseController
 {

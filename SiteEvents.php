@@ -4,8 +4,8 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public\Config;
+namespace BasicApp\Site;
 
-class Public extends BasePublic
+class SiteEvents extends BaseSiteEvents
 {
 }

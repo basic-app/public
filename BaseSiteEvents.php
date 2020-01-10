@@ -4,11 +4,11 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\Public;
+namespace BasicApp\Site;
 
 use BasicApp\Core\Event;
 
-abstract class BasePublicEvents extends \CodeIgniter\Events\Events
+abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
 {
 
     const EVENT_THEMES = 'ba:themes';

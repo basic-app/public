@@ -4,7 +4,7 @@
  * @license MIT
  * @link http://basic-app.com
  */
-namespace BasicApp\System\Config;
+namespace BasicApp\Site\Config;
 
 use Exception;
 
@@ -15,9 +15,9 @@ abstract class BaseServices extends \CodeIgniter\Config\BaseService
     {
         if (!$getShared)
         {
-            $systemConfig = config(System::class);
+            $config = config(Site::class);
 
-            $themeClass = $systemConfig->theme;
+            $themeClass = $config->theme;
 
             if (!$themeClass)
             {
@@ -29,7 +29,7 @@ abstract class BaseServices extends \CodeIgniter\Config\BaseService
             return $theme;
         }
 
-        return static::getSharedInstance('theme');
+        return static::getSharedInstance(__FUNCTION__);
     }
 
 }

@@ -1,14 +1,13 @@
 <?php
 
 use BasicApp\Helpers\Url;
-use BasicApp\Public\PublicEvents;
 use BasicApp\Site\SiteEvents;
 
 $theme = service('theme');
 
 PublicEvents::registerAssets($theme->head, $theme->beginBody, $theme->endBody);
 
-if (class_exists(BasicApp\Site\SiteEvents::class))
+if (class_exists(SiteEvents::class))
 {
     $mainMenu = menu_items('main', true, ['menu_name' => 'Main Menu']);
 }
@@ -22,9 +21,9 @@ if (array_key_exists('mainMenu', $this->data))
     $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
 }
 
-$userMenu = PublicEvents::userMenu();
+$userMenu = SiteEvents::userMenu();
 
-$accountMenu = PublicEvents::accountMenu();
+$accountMenu = SiteEvents::accountMenu();
 
 $defaultTitle = 'My Site';
 
@@ -44,7 +43,7 @@ if (class_exists(SiteEvents::class))
 
 $session = service('session');
 
-$params = PublicEvents::mainLayout([
+$params = SiteEvents::mainLayout([
     'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
     'siteName' => $siteName,
     'mainMenu' => $mainMenu,
