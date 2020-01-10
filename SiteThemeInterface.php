@@ -6,7 +6,7 @@
  */
 namespace BasicApp\Site;
 
-interface PublicThemeInterface
+interface SiteThemeInterface
 {
 
     public function breadcrumbs(array $params = []);
