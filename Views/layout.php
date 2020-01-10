@@ -2,12 +2,14 @@
 
 use BasicApp\Helpers\Url;
 use BasicApp\Site\SiteEvents;
+use BasicApp\Menu\MenuEvents;
+use BasicApp\Block\BlockEvents;
 
 $theme = service('theme');
 
-PublicEvents::registerAssets($theme->head, $theme->beginBody, $theme->endBody);
+SiteEvents::registerAssets($theme->head, $theme->beginBody, $theme->endBody);
 
-if (class_exists(SiteEvents::class))
+if (class_exists(MenuEvents::class))
 {
     $mainMenu = menu_items('main', true, ['menu_name' => 'Main Menu']);
 }
@@ -33,7 +35,7 @@ $copyright = '&copy; My Company {year}';
 
 $defaultDescription = 'Default page description';
 
-if (class_exists(SiteEvents::class))
+if (class_exists(BlockEvents::class))
 {
     $siteName = block('layout.siteName', $siteName);
     $copyright = block('layout.copyright', $copyright);

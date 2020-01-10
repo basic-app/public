@@ -6,16 +6,16 @@
  */
 namespace BasicApp\Site;
 
-abstract class BasePublicController extends \BasicApp\Core\Controller
+abstract class BaseSiteController extends \BasicApp\Core\Controller
 {
 
-	protected $layout = 'BasicApp\Site\Views\layout';
+    protected $layout = 'BasicApp\Site\Views\layout';
 
     public function __construct()
     {
         parent::__construct();
 
-        PublicEvents::controller($this);
+        SiteEvents::siteController($this);
     }
 
 }

@@ -6,6 +6,6 @@
  */
 namespace BasicApp\Site;
 
-abstract class PublicController extends BaseController
+abstract class SiteController extends BaseSiteController
 {
 }

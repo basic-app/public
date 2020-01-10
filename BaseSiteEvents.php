@@ -6,29 +6,22 @@
  */
 namespace BasicApp\Site;
 
-use BasicApp\Core\Event;
+use BasicApp\Site\Events\SiteThemesEvent;
+use BasicApp\Site\Events\SitePagerEvent;
+use BasicApp\Site\Events\SiteAssetsEvent;
+use BasicApp\Site\Events\SiteAccountMenuEvent;
+use BasicApp\Site\Events\SiteMainLayoutEvent;
 
 abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
 {
 
     const EVENT_THEMES = 'ba:themes';
     
-    const EVENT_PAGER = 'ba:pager';
-
-    const EVENT_CONTROLLER = 'ba:controller';
-
     const EVENT_REGISTER_ASSETS = 'ba:register_assets';
-
-    const EVENT_USER_MENU = 'ba:user_menu';
 
     const EVENT_ACCOUNT_MENU = 'ba:account_menu';
 
     const EVENT_MAIN_LAYOUT = 'ba:main_layout';
-
-    public static function onUserMenu($callback)
-    {
-        static::on(static::EVENT_USER_MENU, $callback);
-    }
 
     public static function onMainLayout($callback)
     {
@@ -44,30 +37,15 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
     {
         static::on(static::EVENT_REGISTER_ASSETS, $callback);
     }
-
-    public static function onController($callback)
-    {
-        static::on(static::EVENT_CONTROLLER, $callback);
-    }
     
     public static function onThemes($callback)
     {
         static::on(static::EVENT_THEMES, $callback);
     }
 
-    public static function onPager($callback)
-    {
-        static::on(static::EVENT_PAGER, $callback);
-    }
-
-    public static function pager($pager)
-    {
-        static::trigger(static::EVENT_PAGER, $pager);
-    }
-
     public static function themes($return = [])
     {
-        $event = new Event;
+        $event = new SiteThemesEvent;
 
         $event->result = $return;
 
@@ -76,14 +54,9 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
         return $event->result;
     }
 
-    public static function controller($controller)
-    {
-        static::trigger(static::EVENT_CONTROLLER, $controller);
-    }
-
     public static function registerAssets(&$head, &$beginBody, &$endBody)
     {
-        $event = new Event;
+        $event = new SiteRegisterAssetsEvent;
 
         $event->head = $head;
 
@@ -100,31 +73,11 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
         $endBody = $event->endBody;
     }
 
-    public static function userMenu()
+    public static function accountMenu(array $items = [])
     {
-        $event = new Event;
+        $event = new SiteAccountMenuEvent;
 
-        $event->items = [];
-
-        static::trigger(static::EVENT_USER_MENU, $event);
-
-        $view = service('renderer');
-
-        $data = $view->getData();
-
-        if (array_key_exists('userMenu', $data))
-        {
-            return array_merge_recursive($event->items, $data['userMenu']);
-        }
-
-        return $event->items;
-    }
-
-    public static function accountMenu()
-    {
-        $event = new Event;
-
-        $event->items = [];
+        $event->items = $items;
 
         static::trigger(static::EVENT_ACCOUNT_MENU, $event);
 
@@ -142,7 +95,7 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
 
     public static function mainLayout(array $params = [])
     {
-        $event = new Event;
+        $event = new SiteMainLayoutEvent;
 
         $event->params = $params;
 
@@ -150,5 +103,5 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
 
         return $event->params;
     }
-       
+
 }
