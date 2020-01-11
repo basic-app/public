@@ -6,7 +6,7 @@
  */
 namespace BasicApp\Site\Forms;
 
-use BasicApp\Site\Config\Site as PublicConfig;
+use BasicApp\Site\Config\Site as SiteConfig;
 use BasicApp\Core\Form;
 use BasicApp\Site\SiteEvents;
 
