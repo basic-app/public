@@ -3,6 +3,7 @@
 use BasicApp\Helpers\Url;
 use BasicApp\Site\SiteEvents;
 use BasicApp\Menu\MenuEvents;
+use BasicApp\Member\MemberEvents;
 use BasicApp\Block\BlockEvents;
 
 $theme = service('theme');
@@ -23,7 +24,14 @@ if (array_key_exists('mainMenu', $this->data))
     $mainMenu = array_merge_recursive($mainMenu, $this->data['mainMenu']);
 }
 
-$userMenu = SiteEvents::userMenu();
+if (class_exists(MemberEvents::class))
+{
+    $userMenu = MemberEvents::userMenu();
+}
+else
+{
+    $userMenu = [];
+}
 
 $accountMenu = SiteEvents::accountMenu();
 

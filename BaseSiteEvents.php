@@ -8,7 +8,7 @@ namespace BasicApp\Site;
 
 use BasicApp\Site\Events\SiteThemesEvent;
 use BasicApp\Site\Events\SitePagerEvent;
-use BasicApp\Site\Events\SiteAssetsEvent;
+use BasicApp\Site\Events\SiteRegisterAssetsEvent;
 use BasicApp\Site\Events\SiteAccountMenuEvent;
 use BasicApp\Site\Events\SiteMainLayoutEvent;
 
