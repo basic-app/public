@@ -54,7 +54,10 @@ if (class_exists(BlockEvents::class))
 $session = service('session');
 
 $params = SiteEvents::mainLayout([
-    'title' => array_key_exists('title', $this->data) ? $this->data['title'] : $defaultTitle,
+    'layout' => [
+        'title' => $this->data['title'] ?? $defaultTitle
+    ],
+    'cardTitle' => $this->data['cardTitle'] ?? null,
     'siteName' => $siteName,
     'mainMenu' => $mainMenu,
     'userMenu' => $userMenu,
