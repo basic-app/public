@@ -14,8 +14,6 @@ abstract class BaseSiteController extends \BasicApp\Core\Controller
     public function __construct()
     {
         parent::__construct();
-
-        SiteEvents::siteController($this);
     }
 
 }

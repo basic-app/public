@@ -23,31 +23,6 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
 
     const EVENT_MAIN_LAYOUT = 'ba:main_layout';
 
-
-
-
-
-    const EVENT_SEED = 'ba:site_seed';
-
-    public static function seed($created)
-    {
-        static::trigger(static::EVENT_SEED, $created);
-    }
-
-    public static function onSeed($callback)
-    {
-        static::on(static::EVENT_SEED, $callback);
-    }
-
-
-
-
-
-
-
-
-
-
     public static function onMainLayout($callback)
     {
         static::on(static::EVENT_MAIN_LAYOUT, $callback);
