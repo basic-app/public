@@ -6,12 +6,13 @@ use BasicApp\Site\Forms\SiteConfigForm;
 use BasicApp\System\SystemEvents;
 use BasicApp\System\Events\SystemSeedEvent;
 use BasicApp\Site\Database\Seeds\SiteSeeder;
+use BasicApp\Config\Controllers\Admin\Config as ConfigController;
 
 if (class_exists(AdminEvents::class))
 {
     AdminEvents::onOptionsMenu(function($event)
     {
-        if (BasicApp\Config\Controllers\Admin\Config::checkAccess())
+        if (service('admin')->can(ConfigController::class))
         {
             $event->items[SiteConfigForm::class] = [
                 'label' => t('admin.menu', 'System'),
