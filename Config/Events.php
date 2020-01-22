@@ -22,6 +22,11 @@ if (class_exists(AdminEvents::class))
     });
 }
 
+SystemEvents::onPager(function($event)
+{
+    $event->templates['theme'] = 'BasicApp\Site\pager';
+});
+
 SystemEvents::onSeed(function(SystemSeedEvent $event)
 {
     $seeder = Database::seeder();
