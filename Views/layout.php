@@ -59,14 +59,24 @@ $params = SiteEvents::mainLayout([
     ],
     'cardTitle' => $this->data['cardTitle'] ?? null,
     'siteName' => $siteName,
-    'mainMenu' => $mainMenu,
-    'userMenu' => $userMenu,
-    'accountMenu' => $accountMenu,
-    'actionMenu' => array_key_exists('actionMenu', $this->data) ? $this->data['actionMenu'] : [],
-    'breadcrumbs' => array_key_exists('breadcrumbs', $this->data) ? $this->data['breadcrumbs'] : [],
+    'mainMenu' => [
+        'items' => $mainMenu
+    ],
+    'userMenu' => [
+        'items' => $userMenu
+    ],
+    'accountMenu' => [
+        'items' => $accountMenu
+    ],
+    'actionMenu' => [
+        'items' => $this->data['actionMenu'] ?? []
+    ],
+    'breadcrumbs' => [
+        'items' => $this->data['breadcrumbs'] ?? []
+    ],
     'content' => $content,
     'copyright' => $copyright,
-    'description' => array_key_exists('description', $this->data) ? $this->data['description'] : $defaultDescription,
+    'description' => $this->data['description'] ?? $defaultDescription,
     'successMessages' => (array) $session->getFlashdata('success'),
     'errorMessages' => (array) $session->getFlashdata('error'),
     'infoMessages' => (array) $session->getFlashdata('info')
