@@ -16,8 +16,8 @@ if (class_exists(AdminEvents::class))
         {
             $event->items[SiteConfigForm::class] = [
                 'label' => t('admin.menu', 'System'),
-                'icon' => 'fa fa-wrench',
-                'url' => Url::createUrl('admin/config', ['class' => SiteConfigForm::class])
+                'url' => Url::createUrl('admin/config', ['class' => SiteConfigForm::class]),
+                'icon' => 'fa fa-fw fa-cogs'
             ];
         }
     });
