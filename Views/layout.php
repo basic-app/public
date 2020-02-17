@@ -26,7 +26,7 @@ if (array_key_exists('mainMenu', $this->data))
 
 if (class_exists(MemberEvents::class))
 {
-    $userMenu = MemberEvents::userMenu();
+    $userMenu = MemberEvents::memberMenu();
 }
 else
 {
