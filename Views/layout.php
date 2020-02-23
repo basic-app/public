@@ -59,21 +59,11 @@ $params = SiteEvents::mainLayout([
     ],
     'cardTitle' => $this->data['cardTitle'] ?? null,
     'siteName' => $siteName,
-    'mainMenu' => [
-        'items' => $mainMenu
-    ],
-    'userMenu' => [
-        'items' => $userMenu
-    ],
-    'accountMenu' => [
-        'items' => $accountMenu
-    ],
-    'actionMenu' => [
-        'items' => $this->data['actionMenu'] ?? []
-    ],
-    'breadcrumbs' => [
-        'items' => $this->data['breadcrumbs'] ?? []
-    ],
+    'mainMenu' => $mainMenu,
+    'userMenu' => $userMenu,
+    'accountMenu' => $accountMenu,
+    'actionMenu' => $this->data['actionMenu'] ?? [],
+    'breadcrumbs' => $this->data['breadcrumbs'] ?? [],
     'content' => $content,
     'copyright' => $copyright,
     'description' => $this->data['description'] ?? $defaultDescription,

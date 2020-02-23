@@ -1,5 +1,6 @@
 <?php
 
+use Config\Database;
 use BasicApp\Admin\AdminEvents;
 use BasicApp\Helpers\Url;
 use BasicApp\Site\Forms\SiteConfigForm;
