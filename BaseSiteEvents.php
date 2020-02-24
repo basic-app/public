@@ -7,9 +7,7 @@
 namespace BasicApp\Site;
 
 use BasicApp\Site\Events\SiteThemesEvent;
-use BasicApp\Site\Events\SitePagerEvent;
 use BasicApp\Site\Events\SiteRegisterAssetsEvent;
-use BasicApp\Site\Events\SiteAccountMenuEvent;
 use BasicApp\Site\Events\SiteMainLayoutEvent;
 
 abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
@@ -19,18 +17,11 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
     
     const EVENT_REGISTER_ASSETS = 'ba:register_assets';
 
-    const EVENT_ACCOUNT_MENU = 'ba:account_menu';
-
     const EVENT_MAIN_LAYOUT = 'ba:main_layout';
 
     public static function onMainLayout($callback)
     {
         static::on(static::EVENT_MAIN_LAYOUT, $callback);
-    }
-
-    public static function onAccountMenu($callback)
-    {
-        static::on(static::EVENT_ACCOUNT_MENU, $callback);
     }
 
     public static function onRegisterAssets($callback)
@@ -73,31 +64,19 @@ abstract class BaseSiteEvents extends \CodeIgniter\Events\Events
         $endBody = $event->endBody;
     }
 
-    public static function accountMenu(array $items = [])
-    {
-        $event = new SiteAccountMenuEvent;
-
-        $event->items = $items;
-
-        static::trigger(static::EVENT_ACCOUNT_MENU, $event);
-
-        $view = service('renderer');
-
-        $data = $view->getData();
-
-        if (array_key_exists('accountMenu', $data))
-        {
-            return array_merge_recursive($event->items, $data['accountMenu']);
-        }
-
-        return $event->items;
-    }
-
     public static function mainLayout(array $params = [])
     {
         $event = new SiteMainLayoutEvent;
 
         $event->params = $params;
+
+        $session = service('session');
+
+        $event->params['successMessages'] = (array) $session->getFlashdata('success');
+
+        $event->params['errorMessages'] = (array) $session->getFlashdata('error');
+
+        $event->params['infoMessages'] = (array) $session->getFlashdata('info');
 
         static::trigger(static::EVENT_MAIN_LAYOUT, $event);
 
