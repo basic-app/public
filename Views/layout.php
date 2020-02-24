@@ -11,7 +11,8 @@ $params = SiteEvents::mainLayout([
     'cardTitle' => $this->data['cardTitle'] ?? null,
     'actionMenu' => $this->data['actionMenu'] ?? [],
     'breadcrumbs' => $this->data['breadcrumbs'] ?? [],
-    'content' => $content
+    'content' => $content,
+    'title' => $this->data['title'] ?? null
 ]);
 
 echo $theme->mainLayout($params);
