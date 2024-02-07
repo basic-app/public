@@ -8,6 +8,7 @@ use BasicApp\System\SystemEvents;
 use BasicApp\System\Events\SystemSeedEvent;
 use BasicApp\Site\Database\Seeds\SiteSeeder;
 use BasicApp\Config\Controllers\Admin\Config as ConfigController;
+use CodeIgniter\Events\Events;
 
 if (class_exists(AdminEvents::class))
 {
@@ -24,9 +25,11 @@ if (class_exists(AdminEvents::class))
     });
 }
 
-SystemEvents::onPager(function($event)
+Events::on('pre_system', function()
 {
-    $event->templates['theme'] = 'BasicApp\Site\pager';
+    $config = config(\Config\Pager::class);
+
+    $config->templates['theme'] = 'BasicApp\Site\pager';
 });
 
 SystemEvents::onSeed(function(SystemSeedEvent $event)
