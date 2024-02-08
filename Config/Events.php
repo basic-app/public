@@ -14,14 +14,11 @@ if (class_exists(AdminEvents::class))
 {
     AdminEvents::onOptionsMenu(function($event)
     {
-        if (service('admin')->can(ConfigController::class))
-        {
-            $event->items[SiteConfigForm::class] = [
-                'label' => t('admin.menu', 'System'),
-                'url' => Url::createUrl('admin/config', ['class' => SiteConfigForm::class]),
-                'icon' => 'fa fa-fw fa-cogs'
-            ];
-        }
+        $event->items[SiteConfigForm::class] = [
+            'label' => t('admin.menu', 'System'),
+            'url' => Url::createUrl('admin/config', ['class' => SiteConfigForm::class]),
+            'icon' => 'fa fa-fw fa-cogs'
+        ];
     });
 }
 
