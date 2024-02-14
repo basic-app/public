@@ -9,10 +9,11 @@ use BasicApp\System\Events\SystemSeedEvent;
 use BasicApp\Site\Database\Seeds\SiteSeeder;
 use BasicApp\Config\Controllers\Admin\Config as ConfigController;
 use CodeIgniter\Events\Events;
+use BasicApp\AdminMenu\AdminMenuEvents;
 
-if (class_exists(AdminEvents::class))
+if (class_exists(AdminMenuEvents::class))
 {
-    AdminEvents::onOptionsMenu(function($event)
+    AdminMenuEvents::onOptionsMenu(function($event)
     {
         $event->items[SiteConfigForm::class] = [
             'label' => t('admin.menu', 'System'),
